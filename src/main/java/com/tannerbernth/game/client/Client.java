@@ -5,13 +5,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Collection;
-import java.util.*;
-
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import com.tannerbernth.game.controller.PlayerController;
 
@@ -19,6 +16,7 @@ public class Client extends JPanel {
 	
 	private PlayerController playerController;
 	private final int DELAY = 25;
+	private final int DEFAULT_WIDTH = 300, DEFAULT_HEIGHT = 300;
 
 	public Client(PlayerController playerController) {
 		this.playerController = playerController;
@@ -27,16 +25,15 @@ public class Client extends JPanel {
 	}
 
 	private void createAndShowGui() {
-		JLabel jlabel = new JLabel("This is a label");
-	    this.add(jlabel);
-
 	    JFrame frame = new JFrame("2D RPG");
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    this.setBackground(Color.BLACK);
 		frame.getContentPane().add(this);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.addFocusListener(new ClientFocusListener());
-		frame.setSize(300,300);
+		frame.addMouseListener(new ClientMouseListener());
+		frame.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		frame.setVisible(true);
 	}
 
@@ -44,9 +41,9 @@ public class Client extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		//g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g2.setColor(Color.RED);
 		playerController.draw(g2);
-		g2.drawString("GG", 10, 20);
 	}
 
 	public PlayerController getPlayerController() {
