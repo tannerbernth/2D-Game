@@ -14,7 +14,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <junit.version>3.8.1</junit.version>
+        <junit.version>4.13.1</junit.version>
         <org.springframework.version>4.0.2.RELEASE</org.springframework.version>
     </properties>
 
